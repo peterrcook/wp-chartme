@@ -1,12 +1,8 @@
-/*if(cmeParams.attr.package)
-	google.load('visualization', '1.0', {'packages':cmeParams.attr.package});
-else*/ 
-	google.load('visualization', '1.0', {'packages':['corechart ']});
-
+google.load('visualization', '1.0', {'packages':cmeParams.packages});
 google.setOnLoadCallback(drawChart);
 function drawChart() {
-	for(var i = 0, l = cmeParams.length; i < l; i++) {
-		var p = cmeParams[i];
+	for(var i = 0, l = cmeParams.charts.length; i < l; i++) {
+		var p = cmeParams.charts[i];
 
 		// Create the data table.
 		var data = new google.visualization.arrayToDataTable(p.data, p.attr.firstrowdata === 'true' ? true : false);
