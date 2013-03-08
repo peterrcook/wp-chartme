@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: ChartMe
-Plugin URI: http://prcweb.co.uk
+Plugin URI: http://chartme.prcweb.co.uk
 Description: A Google Chart Tools wrapper, allowing a chart to be embedded within a post
 Version: 1.0
 Author: Peter Cook
@@ -12,14 +12,14 @@ License: GPLv2 or later
 <?php
 
 // Error logging wrapper
-function plog($d, $desc = '') {
-    error_log($desc.': '.print_r($d, true));
-}
+// function plog($d, $desc = '') {
+//     error_log($desc.': '.print_r($d, true));
+// }
 
 //// Admin pages
 add_action('admin_menu', 'cme_admin_menu');
 function cme_admin_menu() {
-    plog('adding');
+    // plog('adding');
     add_options_page('ChartMe About', 'ChartMe', 'manage_options', 'chartme', 'cme_admin_page');
 }
 
@@ -40,19 +40,20 @@ function cme_admin_page() {
         <p>For example, add a custom field with name <b>mydata</b> and value:</p>
         <pre>
 [
-  ['Task', 'Hours per Day'],
-  ['Work',     11],
-  ['Eat',      2],
-  ['Commute',  2],
-  ['Watch TV', 2],
-  ['Sleep',    7]
+  ["Task", "Hours per Day"],
+  ["Work",     11],
+  ["Eat",      2],
+  ["Commute",  2],
+  ["Watch TV", 2],
+  ["Sleep",    7]
 ]
         </pre>
+        <p><strong>Important:</strong> The data must accord to the JSON standard i.e. names and strings must be double quoted.</p>
         <p>You can also assign options by adding another custom field with a unique name.</p>
         <p>For example, add a custom field with name <b>myoptions</b> and value:</p>
         <pre>
 {
-    title: 'My Daily Activities'
+    "title": "My Daily Activities"
 }
         </pre>
         <p>The data and options use the JSON format, just as shown in the Google Chart Tools documentation. Data and options can be shared between charts within the same post.</p>
@@ -71,12 +72,12 @@ function cme_admin_page() {
         </pre>
     <h3>How it works</h3>
     <p>Now for the techie bit: ChartMe provides a wrapper around the Google Chart Tools API. In other words, it provides a window into Google Chart Tools, without you having to write any code.</p>
-    <p>This means that you need to use some of the syntax that Google Chart Tools uses such as the format used for the data and options.</p>
-    <p>To learn more, delve into the Google Chart Tools documentation, or browse some examples.</p>
+    <p>This means that you need to use the syntax that Google Chart Tools uses such as JSON for the data.</p>
+    <p>To learn more, delve into the Google Chart Tools <a href="https://google-developers.appspot.com/chart/interactive/docs">documentation</a>, or browse some <a href="http://chartme.prcweb.co.uk">examples</a>.</p>
     <h3>Support</h3>
-    <p>This project is entirely self funded so I can only provide limited free support. You can help me out by either making a donation or bringing some work my way!</p>
+    <p>This project is entirely self funded so I can only provide limited free support. You can help me out by either making a donation or <a href="http://prcweb.co.uk">bringing some work my way</a>!</p>
+    <p>If you require help on this plug-in please contact me via the project page.</p>
     </div>
-
     <?php
 }
 
